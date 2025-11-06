@@ -1,0 +1,63 @@
+<!-- Header mejorado con opción de Login -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+  <div class="container">
+    <!-- Nombre de la empresa -->
+    <a class="navbar-brand fw-bold text-uppercase" routerLink="/">
+      TechNova
+    </a>
+
+    <!-- Botón para menú móvil -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Enlaces -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-lg-center">
+        <li class="nav-item">
+          <a class="nav-link active fw-semibold" aria-current="page" routerLink="/">Inicio</a>
+        </li>
+        @if (isLogged) {
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" routerLink="/articles">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light-50 disabled" tabindex="-1" aria-disabled="true">Próximamente</a>
+          </li>
+        }
+        <!-- Separador visual -->
+        <li class="nav-item d-none d-lg-block mx-3">
+          <span class="text-light-50">|</span>
+        </li>
+        @if (!isLogged) {
+          <!-- Botón de login -->
+          <li class="nav-item">
+            <a
+              class="btn btn-outline-light fw-semibold px-3 py-1"
+              routerLink="/login"
+            >
+              Iniciar sesión
+            </a>
+          </li>
+        } @else {
+                    <li class="nav-item">
+            <button (click)="logOut()"
+              class="btn btn-outline-light fw-semibold px-3 py-1"
+              routerLink="/login"
+            >
+              Cerrar sesión
+            </button>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>

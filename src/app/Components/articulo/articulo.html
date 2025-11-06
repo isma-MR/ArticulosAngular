@@ -1,0 +1,21 @@
+@if (article) {
+<div class="d-flex flex-column gap-5 justify-content-center align-items-center vh-100">
+    <div class="card" style="width: 18rem;">
+        <img src="images/{{article.id}}.jpg" class="card-img-top">
+        <div class="card-body"> 
+            <h5 class="card-title text-center">{{article.nombre}}</h5>
+            <p class="card-text text-center">{{article.descripcion}}</p>
+            <b>
+                <p class="card-text text-center">{{article.precio}} €</p>
+            </b>
+            <div class="d-flex justify-content-evenly mt-3 align-items-center">
+                <h4>{{article.unidades}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="mx-auto d-block my-5 d-flex gap-3">
+        <button class="btn btn-primary" routerLink="/">Inicio</button>
+        <button class="btn btn-primary" routerLink="/articles">Volver</button>
+    </div>
+</div>
+}

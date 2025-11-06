@@ -1,0 +1,79 @@
+<!-- articulos.html -->
+<div class="container-fluid p-0">
+
+  <!-- Sección Hero -->
+  <div class="bg-light text-center py-5 mb-5">
+    <h1 class="display-4 fw-bold">Innovando tu mundo digital</h1>
+    <p class="lead text-muted mb-4">
+      En <strong>TechNova</strong> diseñamos y fabricamos móviles, portátiles y televisores con la más avanzada tecnología para mejorar tu día a día.
+    </p>
+    <a (click)="goToProducts()" class="btn btn-primary btn-lg">Descubre nuestros productos</a>
+  </div>
+
+  <!-- Botón para añadir nuevo artículo -->
+  @if (isLogged) {
+    <div class="container d-flex justify-content-center mb-4">
+      <a routerLink="/add" class="btn btn-success btn-lg">
+        Añadir nuevo producto
+      </a>
+    </div>
+  }
+
+  <!-- Sección de presentación de categorías -->
+  <div class="container pb-5">
+    <h2 class="text-center mb-4">Nuestras líneas de producto</h2>
+    <p class="text-center text-muted mb-5">Rendimiento, diseño y tecnología en cada dispositivo.</p>
+
+    <div class="row text-center g-4">
+
+      <!-- Móviles -->
+      <div class="col-12 col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+          <img src="images/m1.jpg" alt="Móviles TechNova" class="card-img-top rounded-top">
+          <div class="card-body">
+            <h5 class="card-title">Móviles</h5>
+            <p class="card-text text-muted">Potencia, cámara profesional y diseño elegante. Todo lo que esperas de un smartphone de última generación.</p>
+            <a routerLink="/moviles" class="btn btn-outline-primary">Ver más</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portátiles -->
+      <div class="col-12 col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+          <img src="images/p1.jpg" alt="Portátiles TechNova" class="card-img-top rounded-top">
+          <div class="card-body">
+            <h5 class="card-title">Portátiles</h5>
+            <p class="card-text text-muted">Rendimiento profesional, ligereza y autonomía. Ideales para trabajo, estudio o creatividad sin límites.</p>
+            <a routerLink="/laptops" class="btn btn-outline-primary">Ver más</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Televisores -->
+      <div class="col-12 col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+          <img src="images/t1.jpg" alt="Televisores TechNova" class="card-img-top rounded-top">
+          <div class="card-body">
+            <h5 class="card-title">Televisores</h5>
+            <p class="card-text text-muted">Imágenes 4K vibrantes, sonido envolvente y conectividad total. Vive una nueva experiencia visual.</p>
+            <a routerLink="/tv" class="btn btn-outline-primary">Ver más</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Sección de misión / valores -->
+  <div class="bg-primary text-white text-center py-5">
+    <div class="container">
+      <h2 class="fw-bold mb-3">Tecnología hecha para inspirar</h2>
+      <p class="lead mb-4">
+        Nuestra misión es acercar la innovación a las personas, combinando calidad, sostenibilidad y diseño en cada producto.
+      </p>
+      <a routerLink="/contacto" class="btn btn-light btn-lg">Contáctanos</a>
+    </div>
+  </div>
+
+</div>

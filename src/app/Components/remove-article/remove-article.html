@@ -1,0 +1,27 @@
+<div class="d-flex flex-column gap-5 justify-content-center align-items-center vh-100">
+
+  <!-- Article Card -->
+  @if (article) {  
+    <div class="card" style="width: 18rem;">
+      <img src="images/{{article.id}}.jpg" class="card-img-top" alt="{{article.nombre}}">
+      <div class="card-body text-center"> 
+        <h5 class="card-title">{{article.nombre}}</h5>
+        <p class="card-text">{{article.descripcion}}</p>
+        <b>
+          <p class="card-text">{{article.precio}} €</p>
+        </b>
+      </div>
+    
+    <!-- Confirmation Message -->
+    <div class="text-center">
+      <p class="lead">Are you sure you want to <strong>delete</strong> this article?</p>
+      <p class="text-muted small">This action <strong>cannot be undone</strong>.</p>
+
+      <!-- Action Buttons -->
+      <div class="d-flex justify-content-center gap-3 p-3">
+        <button class="btn btn-primary px-4" routerLink="/articles">Cancel</button>
+        <button class="btn btn-danger px-4" (click)="deleteArticle()" routerLink="/articles">Delete</button>
+      </div>
+    </div>
+  </div>
+  }

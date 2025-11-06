@@ -1,0 +1,10 @@
+.table-container {
+  width: 100%;        // ocupa todo el ancho de la pantalla
+  padding: 0 10rem;    // margen lateral
+  overflow-x: auto;   // scroll horizontal si es necesario
+}
+
+.table {
+  width: 100%;        // tabla ocupa todo el contenedor
+  min-width: 600px;   // evita que se comprima demasiado en pantallas pequeñas
+}
