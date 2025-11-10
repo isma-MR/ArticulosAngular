@@ -1,24 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ArticleService } from '../../Services/article-service';
 import { Article } from '../../Models/article';
-import { Router, RouterLink } from "@angular/router";
+import { RouterLink } from "@angular/router";
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-articulos',
-  imports: [RouterLink],
+  standalone: true,
   templateUrl: './articulos.html',
-  styleUrl: './articulos.scss',
+  styleUrls: ['./articulos.scss'],
+  imports: [RouterLink, CommonModule],
 })
-export class Articulos {
+export class Articulos implements OnInit {
 
-  articles!: Article[];
-  constructor(private articleService: ArticleService){}
+  articles$!: Observable<Article[]>;
 
-  ngOnInit(){
-    this.articleService.getAll().subscribe({
-      next: (datos) => (this.articles = datos as Article[]),
-      error: (error) => console.log('ERROR ' + error.status),
-});
+  constructor(private articleService: ArticleService) {}
 
+  ngOnInit(): void {
+    this.articles$ = this.articleService.getAll<Article[]>();
   }
 }

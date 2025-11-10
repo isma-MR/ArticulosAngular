@@ -1,31 +1,30 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ArticleService } from '../../Services/article-service';
 import { Article } from '../../Models/article';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { map, Observable, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-articulo',
-  imports: [RouterLink],
+  standalone: true,
+  imports: [RouterLink, CommonModule],
   templateUrl: './articulo.html',
   styleUrl: './articulo.scss',
 })
-export class Articulo {
+export class Articulo implements OnInit {
 
-  @Input() article: Article | undefined;
-  id!: string;
+  article$!: Observable<Article>;
 
-  constructor(private articleService: ArticleService, private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private articleService: ArticleService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
-  ngOnInit(){
-    this.activatedRoute.params.subscribe(
-      params=>{this.article=this.articleService.findById(params["id"]); if (this.article){ this.id = this.article.id}}
-    )
-  }
-
-  get isDisabled(): boolean {
-    if (this.article) {
-    return this.article.unidades <= 0;
-    }
-    return true;
+  ngOnInit(): void {
+    this.article$ = this.activatedRoute.params.pipe(
+      map(params => params['id']),
+      switchMap(id => this.articleService.findById<Article>(id))
+    );
   }
 }

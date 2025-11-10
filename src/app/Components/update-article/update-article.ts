@@ -3,30 +3,36 @@ import { FormsModule } from '@angular/forms';
 import { Article } from '../../Models/article';
 import { ActivatedRoute, RouterLink } from "@angular/router";
 import { ArticleService } from '../../Services/article-service';
+import { map, Observable, switchMap, tap } from 'rxjs';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-update-article',
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule, RouterLink, CommonModule],
   templateUrl: './update-article.html',
   styleUrl: './update-article.scss',
 })
 export class UpdateArticle {
-  article!: Article | undefined;
-  id!:string;
+  article$!: Observable<Article>;
+  currentArticle!: Article;
 
   constructor(private articleService: ArticleService, private activatedRoute: ActivatedRoute) {}
   
-
-  ngOnInit(){
-    this.activatedRoute.params.subscribe(
-      params=>{this.article=this.articleService.findById(params["id"]); if (this.article){ this.id = this.article.id}}
+  ngOnInit(): void {
+    this.article$ = this.activatedRoute.params.pipe(
+      map(params => params['id']),
+      switchMap(id => this.articleService.findById<Article>(id)),
+      tap(article => this.currentArticle = article)
     )
-    console.log("ID: "+this.id);
   }
 
-  submit(){
-    console.log(this.article);
-    this.articleService.putArticle(this.article!);
-    console.warn(this.article);
+
+  submit() {
+    this.articleService.update(this.currentArticle.id, this.currentArticle).subscribe({
+      next: updated => console.log('Actualizado:', updated),
+      error: err => console.error('Error al actualizar:', err)
+    });
   }
+
 }

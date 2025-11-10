@@ -1,4 +1,4 @@
-@if (article) {
+@if (article$ | async; as article) {
   <div class="container my-5">
     <div class="card shadow-sm border-0">
       <div class="card-header bg-warning text-dark text-center">
@@ -96,4 +96,5 @@
       </div>
     </div>
   </div>
+  
 }
