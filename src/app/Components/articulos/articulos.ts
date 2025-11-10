@@ -15,9 +15,10 @@ export class Articulos {
   constructor(private articleService: ArticleService){}
 
   ngOnInit(){
-    this.articles = this.articleService.getArticles().sort((a, b) => a.id.localeCompare(b.id));
+    this.articleService.getAll().subscribe({
+      next: (datos) => (this.articles = datos as Article[]),
+      error: (error) => console.log('ERROR ' + error.status),
+});
+
   }
-
-  
-
 }
