@@ -135,6 +135,22 @@
       "descripcion": "asdfasdfsd",
       "unidades": 2,
       "precio": 21
+    },
+    {
+      "id": "m9",
+      "nombre": "Movil 1",
+      "categoria": "Moviles",
+      "descripcion": "gbzfgzfd",
+      "unidades": 0,
+      "precio": 0
+    },
+    {
+      "id": "me1",
+      "nombre": "mesa 1",
+      "categoria": "Mesa",
+      "descripcion": "xcv<xvxcv",
+      "unidades": 0,
+      "precio": 0
     }
   ],
   "users": [
@@ -187,6 +203,11 @@
       "username": "maria",
       "password": "castillo",
       "id": "bf15"
-    }
+    },
+    {
+      "username": "rares",
+      "password" : "ismaelguapo",
+      "id": "zz99"
+      }
   ]
 }
